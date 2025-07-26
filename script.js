@@ -7,8 +7,8 @@ window.onload = () => {
   const lang = localStorage.getItem("lang") || "uk";
   const translations = {
     welcome: {
-      uk: "Ласкаво просимо до StarkStore",
-      en: "Welcome to StarkStore"
+      uk: "Ласкаво просимо до StoreY",
+      en: "Welcome to StoreY"
     },
     tagline: {
       uk: "Магазин, де технології зустрічають стиль.",
