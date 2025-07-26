@@ -2,360 +2,292 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>StoreY — Інтернет-магазин</title>
+  <title>StoreY - Інтернет магазин</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Загальні стилі */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
+      background-color: #121212;
       color: #eee;
-      margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 0;
     }
-    nav {
+    header {
       background: #1f1f1f;
-      padding: 15px 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.9);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
-    .menu {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-    .menu li {
-      display: inline-block;
-    }
-    .menu button {
-      background: linear-gradient(145deg, #3a3a3a, #1c1c1c);
+    header button {
+      background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
       border: none;
-      border-radius: 12px;
-      padding: 12px 22px;
       color: #eee;
+      padding: 12px 24px;
+      border-radius: 15px;
+      font-size: 1rem;
       font-weight: 600;
-      font-size: 16px;
-      box-shadow: 6px 6px 10px #0c0c0c, -6px -6px 10px #545454;
       cursor: pointer;
+      box-shadow: 5px 5px 10px #0c0c0c, -5px -5px 10px #484848;
       transition: all 0.3s ease;
       user-select: none;
     }
-    .menu button:hover {
-      background: linear-gradient(145deg, #555, #2e2e2e);
-      box-shadow: 8px 8px 14px #0b0b0b, -8px -8px 14px #616161;
+    header button:hover {
+      background: linear-gradient(145deg, #4c4c4c, #3a3a3a);
+      box-shadow: inset 3px 3px 6px #232323,
+                  inset -3px -3px 6px #5a5a5a;
       color: #ffd700;
     }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 15px;
+    main {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px 50px;
     }
 
-    h1, h2, h3 {
-      font-weight: 700;
-      color: #ffd700;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    /* Каталог */
-    .catalog-grid {
+    /* Каталог товарів */
+    #catalog {
       display: flex;
-      gap: 30px;
       flex-wrap: wrap;
+      gap: 20px;
       justify-content: center;
     }
-    .catalog-item {
+    .product-card {
       background: #222;
       border-radius: 15px;
-      box-shadow: 6px 6px 10px #0a0a0a, -6px -6px 10px #363636;
-      padding: 15px;
-      width: 280px;
-      text-align: center;
+      width: 260px;
+      box-shadow: 8px 8px 15px #0c0c0c, -8px -8px 15px #383838;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       color: #ddd;
+      transition: transform 0.2s ease;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 15px;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .catalog-item img {
-      max-width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      box-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+    .product-info h3 {
+      margin: 0 0 10px;
     }
-    .catalog-item .price {
-      font-size: 18px;
+    .product-info p {
+      font-size: 0.9rem;
+      flex-grow: 1;
+      margin-bottom: 10px;
+      color: #bbb;
+    }
+    .product-info .price {
       font-weight: 700;
-      margin: 12px 0;
-      color: #ffcc00;
+      font-size: 1.1rem;
+      color: #ffd700;
+      margin-bottom: 10px;
     }
-    .catalog-item button {
-      background: linear-gradient(145deg, #3a3a3a, #1c1c1c);
+    .product-info button {
+      background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
       border: none;
-      border-radius: 12px;
-      padding: 10px 18px;
-      font-weight: 700;
       color: #eee;
-      box-shadow: 4px 4px 8px #0a0a0a, -4px -4px 8px #545454;
+      padding: 10px;
+      border-radius: 12px;
+      font-weight: 600;
       cursor: pointer;
+      box-shadow: 5px 5px 10px #0c0c0c, -5px -5px 10px #484848;
       transition: all 0.3s ease;
-      user-select: none;
     }
-    .catalog-item button:hover {
-      background: linear-gradient(145deg, #555, #2e2e2e);
-      box-shadow: 6px 6px 12px #0b0b0b, -6px -6px 12px #616161;
+    .product-info button:hover {
+      background: linear-gradient(145deg, #4c4c4c, #3a3a3a);
+      box-shadow: inset 3px 3px 6px #232323,
+                  inset -3px -3px 6px #5a5a5a;
       color: #ffd700;
     }
 
     /* Кошик */
     #cart {
-      background: #222;
+      background: #1e1e1e;
       border-radius: 15px;
+      max-width: 400px;
+      margin: 40px auto;
       padding: 20px;
-      box-shadow: 6px 6px 10px #0a0a0a, -6px -6px 10px #363636;
-      max-width: 600px;
-      margin: 0 auto 60px;
-      color: #ddd;
+      box-shadow: 8px 8px 15px #0c0c0c, -8px -8px 15px #383838;
+      color: #eee;
     }
     #cart h2 {
-      color: #ffcc00;
-      margin-bottom: 15px;
+      margin-top: 0;
+      color: #ffd700;
       text-align: center;
     }
     #cart-items {
       list-style: none;
-      padding: 0;
-      margin: 0 0 15px 0;
-      max-height: 180px;
+      padding-left: 0;
+      max-height: 200px;
       overflow-y: auto;
-      border: 1px solid #444;
-      border-radius: 8px;
-      background: #1a1a1a;
+      margin-bottom: 15px;
     }
     #cart-items li {
-      padding: 10px 15px;
-      border-bottom: 1px solid #333;
-      font-weight: 600;
-    }
-    #cart-items li:last-child {
-      border-bottom: none;
-    }
-    #cart-total {
-      font-weight: 700;
-      font-size: 18px;
-      text-align: right;
-      margin-top: 8px;
-      color: #ffd700;
-    }
-    #clear-cart {
-      background: #900;
-      color: #fff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 700;
-      width: 100%;
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    #clear-cart:hover {
-      background: #c00;
+      background: #2a2a2a;
+      margin-bottom: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: inset 2px 2px 5px #1a1a1a, inset -2px -2px 5px #3a3a3a;
     }
 
     /* Карта */
     #map {
       width: 100%;
-      max-width: 900px;
       height: 300px;
-      margin: 40px auto 60px;
       border-radius: 15px;
-      box-shadow: 6px 6px 14px rgba(0,0,0,0.7);
+      margin-top: 40px;
+      box-shadow: 8px 8px 15px #0c0c0c, -8px -8px 15px #383838;
     }
 
-    /* Секції приховані */
-    section.hidden {
-      display: none;
-    }
   </style>
 </head>
 <body>
 
-  <nav>
-    <ul class="menu">
-      <li><button data-page="home">Головна</button></li>
-      <li><button data-page="catalog">Каталог товарів</button></li>
-      <li><button data-page="product">Картка товару</button></li>
-      <li><button data-page="about">Про нас</button></li>
-      <li><button data-page="delivery">Доставка і оплата</button></li>
-      <li><button data-page="contacts">Контакти</button></li>
-      <li><button data-page="cart">Кошик</button></li>
-    </ul>
-  </nav>
+<header>
+  <button onclick="showSection('home')">Головна</button>
+  <button onclick="showSection('catalog')">Каталог товарів</button>
+  <button onclick="showSection('product')">Картка товару</button>
+  <button onclick="showSection('about')">Про нас</button>
+  <button onclick="showSection('delivery')">Доставка і оплата</button>
+  <button onclick="showSection('contacts')">Контакти</button>
+  <button onclick="showSection('cart')">Кошик</button>
+</header>
 
-  <!-- Головна -->
-  <section id="home">
+<main>
+  <!-- Секції -->
+  <section id="home" class="section">
     <h1>Ласкаво просимо до StoreY</h1>
-    <p style="text-align:center; max-width:700px; margin: 0 auto 30px; font-size:18px; color:#ccc;">
-      Магазин, де технології зустрічають стиль.
-    </p>
+    <p>Магазин, де технології зустрічають стиль.</p>
   </section>
 
-  <!-- Каталог товарів -->
-  <section id="catalog" class="hidden">
+  <section id="catalog" class="section" style="display:none;">
     <h2>Каталог товарів</h2>
-    <div class="catalog-grid">
-      <div class="catalog-item">
-        <img src="https://cdn.pixabay.com/photo/2015/05/31/12/14/laptop-791697_1280.jpg" alt="Ноутбук" />
-        <h3>Ноутбук StoreY X15</h3>
-        <p>Потужний ноутбук з Intel i7, 16 GB RAM, 512 GB SSD.</p>
-        <p class="price">Ціна: 29 999 грн</p>
-        <button onclick="addToCart('Ноутбук StoreY X15', 29999)">Додати до кошика</button>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="Ноутбук" />
+      <div class="product-info">
+        <h3>Ноутбук</h3>
+        <p>Потужний ноутбук для роботи та розваг.</p>
+        <div class="price">666 грн</div>
+        <button onclick="addToCart('Ноутбук', 666)">Додати до кошика</button>
       </div>
-      <div class="catalog-item">
-        <img src="https://cdn.pixabay.com/photo/2016/03/27/22/22/cosmetics-1283992_1280.jpg" alt="Косметика" />
-        <h3>Косметика StoreY Luxury</h3>
-        <p>Ексклюзивна косметика преміум-класу.</p>
-        <p class="price">Ціна: 1499 грн</p>
-        <button onclick="addToCart('Косметика StoreY Luxury', 1499)">Додати до кошика</button>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=600&q=80" alt="Косметика" />
+      <div class="product-info">
+        <h3>Косметика</h3>
+        <p>Якісна косметика для щоденного догляду.</p>
+        <div class="price">20 070 707 грн</div>
+        <button onclick="addToCart('Косметика', 20070707)">Додати до кошика</button>
       </div>
     </div>
   </section>
 
-  <!-- Картка товару -->
-  <section id="product" class="hidden">
+  <section id="product" class="section" style="display:none;">
     <h2>Картка товару</h2>
-    <p>Виберіть товар у каталозі, щоб побачити тут деталі.</p>
+    <p>Виберіть товар з каталогу для перегляду деталей.</p>
   </section>
 
-  <!-- Про нас -->
-  <section id="about" class="hidden">
+  <section id="about" class="section" style="display:none;">
     <h2>Про нас</h2>
-    <p style="max-width: 700px; margin: auto; color: #ccc;">
-      StoreY — це сучасний інтернет-магазин, який пропонує найкращі технологічні та косметичні товари.
-      Ми цінуємо якість, стиль та комфорт наших клієнтів.
-    </p>
+    <p>StoreY — сучасний інтернет-магазин, що пропонує якісні товари.</p>
   </section>
 
-  <!-- Доставка і оплата -->
-  <section id="delivery" class="hidden">
+  <section id="delivery" class="section" style="display:none;">
     <h2>Доставка і оплата</h2>
-    <p style="max-width: 700px; margin: auto; color: #ccc;">
-      Ми пропонуємо швидку доставку по всій Україні.
-      Оплата можливі готівкою, карткою або онлайн.
-    </p>
+    <p>Ми пропонуємо швидку доставку та зручні способи оплати.</p>
   </section>
 
-  <!-- Контакти -->
-  <section id="contacts" class="hidden">
+  <section id="contacts" class="section" style="display:none;">
     <h2>Контакти</h2>
-    <form style="max-width: 700px; margin: auto 0 30px;">
-      <label for="name" style="display:block; margin-bottom: 6px;">Ім'я:</label>
-      <input type="text" id="name" placeholder="Ваше ім'я" required style="width: 100%; padding: 8px; margin-bottom: 15px; border-radius:8px; border:none;"/>
-      <label for="email" style="display:block; margin-bottom: 6px;">Email:</label>
-      <input type="email" id="email" placeholder="Ваша пошта" required style="width: 100%; padding: 8px; margin-bottom: 15px; border-radius:8px; border:none;"/>
-      <label for="message" style="display:block; margin-bottom: 6px;">Повідомлення:</label>
-      <textarea id="message" placeholder="Ваше повідомлення" required style="width: 100%; padding: 8px; border-radius:8px; border:none;"></textarea>
-      <button type="submit" style="margin-top: 12px; padding: 10px 18px; border-radius: 12px; background: #3a3a3a; color: #eee; border:none; cursor:pointer; font-weight:700; box-shadow: 4px 4px 8px #0a0a0a, -4px -4px 8px #545454;">
-        Відправити
-      </button>
+    <form onsubmit="event.preventDefault(); alert('Дякуємо за звернення!');">
+      <input type="text" placeholder="Ваше ім'я" required style="width:100%;padding:8px;margin-bottom:10px;border-radius:8px;border:none;"/>
+      <input type="email" placeholder="Email" required style="width:100%;padding:8px;margin-bottom:10px;border-radius:8px;border:none;"/>
+      <textarea placeholder="Ваше повідомлення" required style="width:100%;padding:8px;margin-bottom:10px;border-radius:8px;border:none;"></textarea>
+      <button type="submit" style="padding:10px 20px; border-radius:12px; border:none; background:#333; color:#eee; cursor:pointer; font-weight:600; box-shadow:5px 5px 10px #0c0c0c, -5px -5px 10px #484848;">Відправити</button>
     </form>
     <div id="map"></div>
   </section>
 
-  <!-- Кошик -->
-  <section id="cart" class="hidden">
+  <section id="cart" class="section" style="display:none;">
     <h2>Кошик</h2>
     <ul id="cart-items"></ul>
-    <div id="cart-total"></div>
-    <button id="clear-cart">Очистити кошик</button>
+    <button onclick="clearCart()" style="background:#b22222; color:#fff; border:none; padding:10px 20px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow: 5px 5px 10px #800000;">Очистити кошик</button>
   </section>
+</main>
 
 <script>
-  // Навігація між секціями
-  const buttons = document.querySelectorAll('nav button[data-page]');
-  const sections = document.querySelectorAll('section');
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+  }
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const page = btn.getAttribute('data-page');
-      sections.forEach(sec => {
-        if(sec.id === page) {
-          sec.classList.remove('hidden');
-          window.scrollTo({top: 0, behavior: 'smooth'});
-        } else {
-          sec.classList.add('hidden');
-        }
-      });
-    });
-  });
+  // Показати головну секцію за замовчуванням
+  showSection('home');
 
   // Кошик
-  function loadCart() {
+  function addToCart(name, price) {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart.push({ name, price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Додано до кошика!');
+    renderCart();
+  }
+
+  function renderCart() {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const ul = document.getElementById('cart-items');
-    const totalEl = document.getElementById('cart-total');
     ul.innerHTML = '';
-    if(cart.length === 0){
+    if (cart.length === 0) {
       ul.innerHTML = '<li>Кошик порожній</li>';
-      totalEl.textContent = '';
       return;
     }
-    let total = 0;
     cart.forEach(item => {
       const li = document.createElement('li');
       li.textContent = `${item.name} - ${item.price.toLocaleString()} грн`;
       ul.appendChild(li);
-      total += item.price;
     });
-    totalEl.textContent = `Всього: ${total.toLocaleString()} грн`;
   }
 
-  function addToCart(name, price) {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    cart.push({name, price});
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Додано до кошика!');
-    loadCart();
+  function clearCart() {
+    localStorage.removeItem('cart');
+    renderCart();
   }
 
-  document.getElementById('clear-cart').addEventListener('click', () => {
-    if(confirm('Очистити кошик?')) {
-      localStorage.removeItem('cart');
-      loadCart();
-    }
-  });
+  renderCart();
 
-  // При відкритті сайту показати головну і завантажити кошик
-  window.addEventListener('load', () => {
-    sections.forEach(sec => {
-      if(sec.id === 'home') sec.classList.remove('hidden');
-      else sec.classList.add('hidden');
-    });
-    loadCart();
-  });
-
-  // Карта Google Maps
+  // Ініціалізація карти Google Maps
   function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 50.06143, lng: 19.93658 }, // Вроцлав, Польща
+      center: { lat: 51.1079, lng: 17.0385 }, // Вроцлав
       zoom: 12,
     });
     new google.maps.Marker({
-      position: { lat: 50.06143, lng: 19.93658 },
-      map,
-      title: "StoreY - Вроцлав",
+      position: { lat: 51.1079, lng: 17.0385 },
+      map: map,
+      title: "StoreY Вроцлав",
     });
   }
+
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+<!-- Google Maps API -->
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>
 
 </body>
 </html>
