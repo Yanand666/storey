@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StoreY — Головна</title>
+  <title>StoreY - Інтернет-магазин</title>
   <style>
+    /* Загальні стилі */
     body {
       margin: 0;
       padding: 16px;
       background: #121212;
       color: #eee;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -23,12 +24,14 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Меню - горизонтальне */
     nav.main-menu {
       display: flex;
       flex-direction: row;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       flex-wrap: wrap;
     }
     button.menu-button {
@@ -40,6 +43,7 @@
       font-size: 18px;
       padding: 14px 28px;
       cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       user-select: none;
       white-space: nowrap;
     }
@@ -47,35 +51,112 @@
       transform: scale(0.95);
       box-shadow: inset 4px 4px 8px #0f0f0f, inset -4px -4px 8px #3b3b3b;
     }
+    /* Для дуже вузьких екранів (дуже маленький телефон) - меню переноситься на 2 рядки */
     @media (max-width: 380px) {
+      nav.main-menu {
+        justify-content: flex-start;
+        gap: 12px;
+      }
       button.menu-button {
         flex: 1 1 45%;
         font-size: 16px;
         padding: 12px 18px;
       }
     }
-    .main-message {
+
+    /* Каталог */
+    section.catalog {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 480px) {
+      section.catalog {
+        grid-template-columns: 1fr;
+      }
+    }
+    .product-card {
+      background: #222;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 6px 6px 12px #1b1b1b, -6px -6px 12px #2e2e2e;
+      color: #fff;
+      transition: transform 0.3s ease;
       text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      background: linear-gradient(to right, #ff4e00, #ec9f05);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 8px 8px 16px #1b1b1b, -8px -8px 16px #2e2e2e;
+    }
+    .product-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    /* Карта */
+    footer.map-footer {
+      flex-grow: 1;
+      min-height: 250px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+    footer.map-footer iframe {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <nav class="main-menu">
-    <button class="menu-button" onclick="location.href='index.html'">Головна</button>
-    <button class="menu-button" onclick="location.href='Каталог товарів/catalog.html'">Каталог товарів</button>
-    <button class="menu-button">Про нас</button>
-    <button class="menu-button">Контакти</button>
+  <nav class="main-menu" role="navigation" aria-label="Головне меню">
+    <button class="menu-button" type="button">Головна</button>
+    <button class="menu-button" type="button">Каталог товарів</button>
+    <button class="menu-button" type="button">Про нас</button>
+    <button class="menu-button" type="button">Контакти</button>
   </nav>
 
-  <div class="main-message">виділи як умію нах</div>
+  <section class="catalog" aria-label="Каталог товарів">
+    <article class="product-card">
+      <img
+        src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
+        alt="Ноутбук"
+        class="product-image"
+        loading="lazy"
+      />
+      <h3>Ноутбук</h3>
+      <p>25000 грн</p>
+    </article>
+
+    <article class="product-card">
+      <img
+        src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80"
+        alt="Косметика"
+        class="product-image"
+        loading="lazy"
+      />
+      <h3>Косметика</h3>
+      <p>1500 грн</p>
+    </article>
+  </section>
+
+  <footer class="map-footer" role="contentinfo" aria-label="Карта Google Maps">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2546.9534973820517!2d30.5238!3d50.4501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce563a5f7215%3A0x8f51a4d645df3b2c!2z0LLRg9C70LjRhtGPINCy0LjRgdGC0LLQtdGA0YHRgtGA0LDRgNC-0LHQu9C40L3QsNGP!5e0!3m2!1suk!2sua!4v1690432327999!5m2!1suk!2sua"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Google Map"
+    ></iframe>
+  </footer>
 
   <script>
+    // Анімація плавного появи сторінки після завантаження
     window.addEventListener('load', () => {
       document.body.classList.add('loaded');
     });
