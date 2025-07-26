@@ -2,266 +2,38 @@ body {
   font-family: Arial, sans-serif;
   background: #121212;
   color: #eee;
-  margin: 0;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0; padding: 20px;
+  display: flex; flex-direction: column; align-items: center;
 }
+header { width: 100%; max-width: 900px; text-align: center; margin-bottom: 30px; }
+h1 { font-size: 2.5rem; margin-bottom: 15px; }
+.menu { list-style: none; display: flex; gap: 15px; justify-content: center; padding:0; margin:0; }
+.menu button { /* стиль об'ємної кнопки з меню */ background: linear-gradient(145deg, #4a90e2, #1c3f94); border:none; padding:14px 28px; border-radius:14px;color:#fff;font-weight:700;font-size:1.1rem;cursor:pointer;box-shadow:6px 6px 12px #18316e, -6px -6px 16px #65a0ff; transition:all .3s; user-select:none; text-shadow:0 2px 4px rgba(0,0,0,0.3); }
+.menu button:hover { background: linear-gradient(145deg, #1c3f94, #4a90e2); box-shadow:8px 8px 20px #142857, -8px -8px 22px #8cb1ff; transform:translateY(-3px); }
+.menu button:active { box-shadow: inset 4px 4px 8px #18316e, inset -4px -4px 10px #65a0ff; transform:translateY(1px); }
 
-header {
-  width: 100%;
-  max-width: 900px;
-  text-align: center;
-  margin-bottom: 30px;
-}
+/* Каталог */
+.catalog-section { width:100%; max-width:900px; background:#222; border-radius:12px; padding:25px; box-shadow:5px 5px 15px #0008; margin-bottom:40px; color:#eee; }
+.catalog-section h2 { text-align:center; font-size:2rem; margin-bottom:25px; }
+.catalog-grid { display:flex; gap:25px; flex-wrap: wrap; justify-content:center; }
+.catalog-item { background:#333; border-radius:14px; width:280px; padding:15px; box-shadow:4px 4px 12px #111, -4px -4px 12px #444; display:flex; flex-direction:column; align-items:center; user-select:none; }
+.catalog-item img { width:100%; border-radius:12px; margin-bottom:15px; box-shadow:0 4px 8px rgba(0,0,0,0.8); }
+.catalog-item h3 { font-size:1.4rem; margin-bottom:10px; text-align:center; }
+.catalog-item p { margin:0 0 12px; text-align:center; line-height:1.3; }
+.catalog-item .price { font-weight:700; font-size:1.2rem; margin-bottom:15px; }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
+.catalog-item button { background: linear-gradient(145deg, #4a90e2, #1c3f94); border:none; padding:10px 22px; border-radius:14px; color:#fff;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:5px 5px 10px #18316e, -5px -5px 14px #65a0ff; transition:all .3s; user-select:none; text-shadow:0 1px 3px rgba(0,0,0,0.3); }
+.catalog-item button:hover { background: linear-gradient(145deg, #1c3f94, #4a90e2); box-shadow:7px 7px 18px #142857, -7px -7px 20px #8cb1ff; transform:translateY(-3px); }
+.catalog-item button:active { box-shadow: inset 4px 4px 8px #18316e, inset -4px -4px 10px #65a0ff; transform:translateY(1px); }
 
-.menu {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  padding: 0;
-  margin: 0;
-}
+/* Обраний товар картка */
+.product-section { width:100%; max-width:900px; margin-bottom:40px; }
+.product-card { display:flex; gap:20px; background:#333; padding:20px; border-radius:12px; box-shadow:4px 4px 12px #111, -4px -4px 12px #444; color:#eee; }
+.product-card.hidden { display:none; }
+.product-card img { width:200px; border-radius:12px; }
+.product-info { max-width:500px; }
+.product-info h3 { font-size:1.8rem; margin-bottom:12px; }
+#buyBtn { /* зелена стильна кнопка */ }
 
-.menu li {}
-
-.menu button {
-  background: linear-gradient(145deg, #4a90e2, #1c3f94);
-  border: none;
-  padding: 14px 28px;
-  border-radius: 14px;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.1rem;
-  cursor: pointer;
-  box-shadow: 6px 6px 12px #18316e,
-              -6px -6px 16px #65a0ff;
-  transition: background 0.3s ease, box-shadow 0.2s ease, transform 0.1s ease;
-  user-select: none;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.menu button:hover {
-  background: linear-gradient(145deg, #1c3f94, #4a90e2);
-  box-shadow: 8px 8px 20px #142857,
-              -8px -8px 22px #8cb1ff;
-  transform: translateY(-3px);
-}
-
-.menu button:active {
-  box-shadow: inset 4px 4px 8px #18316e,
-              inset -4px -4px 10px #65a0ff;
-  transform: translateY(1px);
-}
-
-/* Контент */
-main#content {
-  width: 100%;
-  max-width: 900px;
-  background: #222;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: inset 4px 4px 12px #111, inset -4px -4px 12px #333;
-  min-height: 200px;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* Секція товару */
-.product-section {
-  width: 100%;
-  max-width: 900px;
-  background: #222;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 5px 5px 15px #0008;
-  margin-bottom: 40px;
-}
-
-.product-card {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.product-card img {
-  width: 280px;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.8);
-  user-select: none;
-}
-
-.product-info {
-  max-width: 450px;
-  color: #eee;
-}
-
-.product-info h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 1.8rem;
-}
-
-.product-info p {
-  margin: 0 0 12px;
-  line-height: 1.4;
-}
-
-.product-info .price {
-  font-weight: 700;
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-}
-
-/* Кнопка Купити */
-#buyBtn {
-  background: linear-gradient(145deg, #28a745, #1c6b2e);
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 6px 6px 14px #134d22,
-              -6px -6px 18px #40c060;
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
-  user-select: none;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-}
-
-#buyBtn:hover {
-  background: linear-gradient(145deg, #1c6b2e, #28a745);
-  box-shadow: 8px 8px 20px #0f3c1a,
-              -8px -8px 22px #62d576;
-  transform: translateY(-3px);
-}
-
-#buyBtn:active {
-  box-shadow: inset 4px 4px 10px #134d22,
-              inset -4px -4px 12px #40c060;
-  transform: translateY(1px);
-}
-
-/* Секція карти */
-.map-section {
-  width: 100%;
-  max-width: 900px;
-  background: #222;
-  border-radius: 12px;
-  padding: 25px 20px 20px 20px;
-  box-shadow: 5px 5px 15px #0008;
-  margin-bottom: 50px;
-}
-
-.map-section h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.map-section iframe {
-  border-radius: 12px;
-  .catalog-section {
-  width: 100%;
-  max-width: 900px;
-  background: #222;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 5px 5px 15px #0008;
-  margin-bottom: 40px;
-}
-
-.catalog-section h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 2rem;
-}
-
-.catalog-grid {
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.catalog-item {
-  background: #333;
-  border-radius: 14px;
-  width: 280px;
-  padding: 15px;
-  box-shadow: 4px 4px 12px #111, -4px -4px 12px #444;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #eee;
-  user-select: none;
-}
-
-.catalog-item img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.8);
-}
-
-.catalog-item h3 {
-  margin: 0 0 10px;
-  font-size: 1.4rem;
-  text-align: center;
-}
-
-.catalog-item p {
-  margin: 0 0 12px;
-  text-align: center;
-  line-height: 1.3;
-}
-
-.catalog-item .price {
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-}
-
-/* Кнопки у каталозі */
-.catalog-item button {
-  background: linear-gradient(145deg, #4a90e2, #1c3f94);
-  border: none;
-  padding: 10px 22px;
-  border-radius: 14px;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 5px 5px 10px #18316e,
-              -5px -5px 14px #65a0ff;
-  transition: background 0.3s ease, box-shadow 0.2s ease, transform 0.1s ease;
-  user-select: none;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
-
-.catalog-item button:hover {
-  background: linear-gradient(145deg, #1c3f94, #4a90e2);
-  box-shadow: 7px 7px 18px #142857,
-              -7px -7px 20px #8cb1ff;
-  transform: translateY(-3px);
-}
-
-.catalog-item button:active {
-  box-shadow: inset 4px 4px 8px #18316e,
-              inset -4px -4px 10px #65a0ff;
-  transform: translateY(1px);
-}
+/* Карта розташована раніше */
+.map-section { width:100%; max-width:900px; background:#222; border-radius:12px; padding:25px 20px; box-shadow:5px 5px 15px #0008; margin-bottom:50px; }
