@@ -2,22 +2,96 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>StoreY</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StoreY - Магазин</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
   <script type="module" src="script.js" defer></script>
 </head>
 <body>
-  <h1 data-lang="welcome">Ласкаво просимо до StoreY</h1>
-  <p data-lang="tagline">Магазин, де технології зустрічають стиль.</p>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li><button data-section="home">Головна</button></li>
+        <li><button data-section="catalog">Каталог</button></li>
+        <li><button data-section="about">Про нас</button></li>
+        <li><button data-section="delivery">Доставка і оплата</button></li>
+        <li><button data-section="contacts">Контакти</button></li>
+        <li><button data-section="cart">Кошик (<span id="cart-count">0</span>)</button></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="products">
-    <button onclick="addToCart('Ноутбук', 15000)">Додати в кошик</button>
-    <button onclick="addToCart('Смартфон', 9000)">Додати в кошик</button>
-    <button onclick="addToCart('Навушники', 2500)">Додати в кошик</button>
-  </div>
+  <main>
+    <!-- Головна сторінка -->
+    <section id="home" class="section active">
+      <div class="banner">
+        <h1>Ласкаво просимо до StoreY</h1>
+        <p>Магазин, де технології зустрічають стиль.</p>
+      </div>
+      <div class="promo">
+        <h2>Акції</h2>
+        <ul>
+          <li>Знижка 10% на всі ноутбуки</li>
+          <li>Безкоштовна доставка при замовленні від 5000 грн</li>
+          <li>Подарунок при покупці смартфона</li>
+        </ul>
+      </div>
+      <div class="advantages">
+        <h2>Наші переваги</h2>
+        <ul>
+          <li>Швидка доставка</li>
+          <li>Гарантія якості</li>
+          <li>Підтримка 24/7</li>
+        </ul>
+      </div>
+    </section>
 
-  <h2>Кошик:</h2>
-  <ul id="cart-items"></ul>
+    <!-- Каталог товарів -->
+    <section id="catalog" class="section">
+      <h2>Каталог товарів</h2>
+      <div class="filters">
+        <label>Фільтр за ціною:
+          <input type="range" id="priceFilter" min="0" max="20000" value="20000" />
+          <span id="priceValue">20000</span> грн
+        </label>
+      </div>
+      <div id="productList" class="product-list"></div>
+    </section>
+
+    <!-- Про нас -->
+    <section id="about" class="section">
+      <h2>Про нас</h2>
+      <p>StoreY — сучасний інтернет-магазин електроніки з фокусом на якість та сервіс.</p>
+    </section>
+
+    <!-- Доставка і оплата -->
+    <section id="delivery" class="section">
+      <h2>Доставка і оплата</h2>
+      <p>Ми доставляємо товари по всій Україні. Оплата — карткою, готівкою при отриманні або онлайн.</p>
+    </section>
+
+    <!-- Контакти -->
+    <section id="contacts" class="section">
+      <h2>Контакти</h2>
+      <form id="contactForm">
+        <label>Ім’я:<br /><input type="text" name="name" required /></label><br />
+        <label>Пошта:<br /><input type="email" name="email" required /></label><br />
+        <label>Повідомлення:<br /><textarea name="message" required></textarea></label><br />
+        <button type="submit">Відправити</button>
+      </form>
+      <div class="map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.999936939927!2d16.927885716075065!3d51.10788597967292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe5fdf9b97437%3A0xd61a777f6a5b93cc!2sWroc%C5%82aw!5e0!3m2!1suk!2spl!4v1689980000000!5m2!1suk!2spl" 
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Кошик -->
+    <section id="cart" class="section">
+      <h2>Кошик</h2>
+      <ul id="cart-items"></ul>
+      <button id="checkoutBtn">Оформити замовлення</button>
+    </section>
+  </main>
 </body>
 </html>
