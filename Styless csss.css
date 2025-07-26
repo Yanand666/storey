@@ -1,0 +1,28 @@
+.menu button {
+  background: linear-gradient(145deg, #4a90e2, #1c3f94);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 6px 6px 12px #18316e,
+              -6px -6px 16px #65a0ff;
+  transition: background 0.3s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  user-select: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.menu button:hover {
+  background: linear-gradient(145deg, #1c3f94, #4a90e2);
+  box-shadow: 8px 8px 20px #142857,
+              -8px -8px 22px #8cb1ff;
+  transform: translateY(-3px);
+}
+
+.menu button:active {
+  box-shadow: inset 4px 4px 8px #18316e,
+              inset -4px -4px 10px #65a0ff;
+  transform: translateY(1px);
+}
