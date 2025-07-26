@@ -2,31 +2,19 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
+  <title>StarkStore | Реєстрація</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Головна - Stark Store</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="auth.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="logo">StarkStore</div>
-    <nav>
-      <a href="index.html">Головна</a>
-      <a href="catalog.html">Каталог</a>
-      <a href="about.html">Про нас</a>
-      <a href="delivery.html">Доставка</a>
-      <a href="contact.html">Контакти</a>
-      <a href="cart.html">Кошик</a>
-    </nav>
-    <div class="lang-switch">
-      <button onclick="setLanguage('uk')">UA</button>
-      <button onclick="setLanguage('en')">EN</button>
-    </div>
-  </header>
-  <div class="hero">
-    <h1 data-lang="welcome">Ласкаво просимо до StarkStore</h1>
-    <p data-lang="tagline">Магазин, де технології зустрічають стиль.</p>
+  <div class="auth-container">
+    <h1>StarkStore</h1>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Пароль" />
+    <button id="registerBtn">Зареєструватись</button>
+    <button id="loginBtn">Увійти</button>
+    <p id="status"></p>
   </div>
-  <footer>&copy; 2025 StarkStore</footer>
 </body>
 </html>
