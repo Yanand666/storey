@@ -1,1 +1,40 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Каталог</title><link rel='stylesheet' href='style.css'></head><body><h1>Каталог товарів</h1></body></html>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Каталог - Stark Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="logo">StarkStore</div>
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">Про нас</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="contact.html">Контакти</a>
+      <a href="cart.html">Кошик</a>
+    </nav>
+    <div class="lang-switch">
+      <button onclick="setLanguage('uk')">UA</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
+  </header>
+  <main class="catalog">
+    <div class="product">
+      <h2>Футболка Stark</h2>
+      <p>Ціна: 599 грн</p>
+      <button onclick="addToCart('Футболка Stark', 599)">До кошика</button>
+    </div>
+    <div class="product">
+      <h2>Косметика StarkSkin</h2>
+      <p>Ціна: 399 грн</p>
+      <button onclick="addToCart('Косметика StarkSkin', 399)">До кошика</button>
+    </div>
+  </main>
+  <footer>&copy; 2025 StarkStore</footer>
+</body>
+</html>

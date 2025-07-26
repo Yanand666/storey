@@ -1,1 +1,33 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Адмін</title><link rel='stylesheet' href='style.css'></head><body><h1>Логін: yan7666<br>Пароль: Lordyan41k</h1></body></html>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Адмін-панель</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function login() {
+      const user = document.getElementById('user').value;
+      const pass = document.getElementById('pass').value;
+      if (user === 'yan7666' && pass === 'Lordyan41k') {
+        document.getElementById('admin-content').style.display = 'block';
+        document.getElementById('login-form').style.display = 'none';
+      } else {
+        alert('Невірні дані');
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="login-form">
+    <h2>Вхід в адмін-панель</h2>
+    <input type="text" id="user" placeholder="Логін">
+    <input type="password" id="pass" placeholder="Пароль">
+    <button onclick="login()">Увійти</button>
+  </div>
+  <div id="admin-content" style="display:none;">
+    <h1>Ласкаво просимо до адмінки</h1>
+    <p>Тут буде керування товарами</p>
+  </div>
+</body>
+</html>

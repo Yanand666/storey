@@ -2,35 +2,31 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Головна — Магазин</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Головна - Stark Store</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="main.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header>
-    <div class="logo">Storey</div>
+    <div class="logo">StarkStore</div>
     <nav>
       <a href="index.html">Головна</a>
       <a href="catalog.html">Каталог</a>
       <a href="about.html">Про нас</a>
       <a href="delivery.html">Доставка</a>
-      <a href="contacts.html">Контакти</a>
+      <a href="contact.html">Контакти</a>
+      <a href="cart.html">Кошик</a>
     </nav>
     <div class="lang-switch">
-      <button onclick="switchLang('uk')">UA</button>
-      <button onclick="switchLang('en')">EN</button>
+      <button onclick="setLanguage('uk')">UA</button>
+      <button onclick="setLanguage('en')">EN</button>
     </div>
-    <a href="cart.html" class="cart-link">🛒</a>
   </header>
-  <main>
-    <section class="hero">
-      <h1>Ласкаво просимо до Storey</h1>
-      <p>Одяг • Косметика • Техніка • Товари для дому</p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Storey. Усі права захищені.</p>
-  </footer>
+  <div class="hero">
+    <h1 data-lang="welcome">Ласкаво просимо до StarkStore</h1>
+    <p data-lang="tagline">Магазин, де технології зустрічають стиль.</p>
+  </div>
+  <footer>&copy; 2025 StarkStore</footer>
 </body>
 </html>
