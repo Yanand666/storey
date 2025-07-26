@@ -1,3 +1,1 @@
-function switchLang(lang) {
-  alert("Мова переключена: " + (lang === "uk" ? "Українська" : "English"));
-}
+console.log('Сайт запущено');
