@@ -22,6 +22,7 @@
       opacity: 1;
       transform: translateY(0);
     }
+
     nav.main-menu {
       display: flex;
       flex-direction: row;
@@ -32,19 +33,20 @@
     }
     button.menu-button {
       background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-      box-shadow: 4px 4px 8px #0f0f0f, -4px -4px 8px #3b3b3b;
+      box-shadow: 0 0 12px rgba(255, 102, 0, 0.4), 4px 4px 8px #0f0f0f, -4px -4px 8px #3b3b3b;
       border: none;
       border-radius: 12px;
       color: #fff;
       font-size: 18px;
       padding: 14px 28px;
       cursor: pointer;
+      transition: all 0.2s ease;
       user-select: none;
       white-space: nowrap;
     }
     button.menu-button:active {
       transform: scale(0.95);
-      box-shadow: inset 4px 4px 8px #0f0f0f, inset -4px -4px 8px #3b3b3b;
+      box-shadow: inset 4px 4px 8px #0f0f0f, inset -4px -4px 8px #3b3b3b, 0 0 10px rgba(255, 102, 0, 0.5);
     }
 
     section.catalog {
@@ -58,6 +60,7 @@
         grid-template-columns: 1fr;
       }
     }
+
     .product-card {
       background: #222;
       border-radius: 16px;
@@ -66,6 +69,7 @@
       color: #fff;
       transition: transform 0.3s ease;
       text-align: center;
+      position: relative;
     }
     .product-card:hover {
       transform: translateY(-6px);
@@ -77,6 +81,24 @@
       object-fit: cover;
       border-radius: 12px;
       margin-bottom: 12px;
+      cursor: pointer;
+    }
+
+    .product-description {
+      display: none;
+      margin-top: 10px;
+      font-style: italic;
+      color: #ff6600;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .product-card.active .product-description {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     footer.map-footer {
@@ -101,15 +123,15 @@
   </nav>
 
   <section class="catalog">
-    <article class="product-card">
+    <article class="product-card" onclick="toggleDescription(this)">
       <img
         src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
         alt="Ноутбук"
         class="product-image"
-        loading="lazy"
       />
       <h3>Ноутбук</h3>
       <p>25000 грн</p>
+      <div class="product-description">don’t push the horses</div>
     </article>
 
     <article class="product-card">
@@ -117,7 +139,6 @@
         src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80"
         alt="Косметика"
         class="product-image"
-        loading="lazy"
       />
       <h3>Косметика</h3>
       <p>1500 грн</p>
@@ -138,6 +159,10 @@
     window.addEventListener('load', () => {
       document.body.classList.add('loaded');
     });
+
+    function toggleDescription(card) {
+      card.classList.toggle('active');
+    }
   </script>
 </body>
 </html>
