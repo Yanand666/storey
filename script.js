@@ -25,6 +25,7 @@ window.onload = () => {
   if (document.getElementById("cart-items")) {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     const ul = document.getElementById("cart-items");
+    ul.innerHTML = ""; // очищаємо список, щоб не дублювались
     cart.forEach(item => {
       const li = document.createElement("li");
       li.textContent = `${item.name} - ${item.price} грн`;
@@ -38,4 +39,6 @@ function addToCart(name, price) {
   cart.push({ name, price });
   localStorage.setItem("cart", JSON.stringify(cart));
   alert("Додано до кошика!");
+  // Оновити відображення кошика
+  window.onload();
 }
